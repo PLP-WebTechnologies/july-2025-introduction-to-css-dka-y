@@ -1,100 +1,128 @@
-/* Base styles */
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and overall typography */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f7f8;
-  color: #333;
-  margin: 0;
-  padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
 }
 
-/* Header */
-.site-header {
-  background-color: #2a9d8f;
-  color: white;
-  padding: 20px 40px;
-  border-bottom: 5px solid #264653;
+/* Header styles using Flexbox */
+.header {
+    display: flex;
+    justify-content: space-between; /* space between title and nav */
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #4CAF50;
+    color: white;
 }
 
-.site-header h1 {
-  margin: 0 0 10px 0;
-  font-size: 2rem;
-}
-
+/* Navigation list styled as horizontal flexbox */
 .nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
 }
 
-.nav-list li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+/* Navigation links */
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
-.nav-list li a:hover {
-  background-color: #264653;
+.nav-list a:hover {
+    color: #d4e157;
 }
 
-/* Container for main content */
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
+/* Main content spacing */
+.main-content {
+    padding: 2rem;
 }
 
-/* Card style to demonstrate box model */
-.card {
-  background-color: white;
-  border: 3px solid #e76f51;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 30px;
-  box-sizing: border-box; /* includes border and padding in width */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+/* Intro section with Flexbox centering */
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-.card h2 {
-  margin-top: 0;
-  color: #e76f51;
-  font-size: 1.5rem;
+/* Grid container with CSS Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 1.5rem;
 }
 
-/* Paragraph styling inside cards */
-.card p {
-  line-height: 1.6;
-  margin: 15px 0 0 0;
+/* Grid items styling */
+.grid-item {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    text-align: center;
+    font-weight: 600;
 }
 
-/* Button styles */
-.btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #2a9d8f;
-  color: white;
-  border: 2px solid #264653;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-sizing: content-box; /* default */
+/* Footer styles using Flexbox */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
 }
 
-.btn:hover {
-  background-color: #264653;
+/* Responsive Media Queries */
+
+/* Tablets: adjust grid columns and header layout */
+@media (max-width: 900px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    /* Grid becomes 2 columns */
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Footer */
-.site-footer {
-  background-color: #264653;
-  color: white;
-  text-align: center;
-  padding: 15px 20px;
-  margin-top: 60px;
+/* Mobile phones: stack everything vertically */
+@media (max-width: 600px) {
+    .header {
+        padding: 1rem;
+    }
+
+    /* Navigation becomes vertical */
+    .nav-list {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    /* Grid becomes single column */
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
 }
